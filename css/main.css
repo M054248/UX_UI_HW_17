@@ -1,7 +1,7 @@
-html, body{
+/* html, body{
     height:100%;
     width:100%;
-}
+} */
 body {
     background-image: url("../images/blue-graph-paper.jpg");
     background-repeat: repeat;
@@ -9,11 +9,13 @@ body {
     background-size:1000px;
     background-color:white;
     margin:0%;
-    display:grid;
-    grid-template-columns: repeat(3,1fr);
-    grid-auto-rows: minmax(100px, auto);
+    display:grid auto;
+    grid-template-areas: 6, 1fr
+    'header header header header header header'
+    'content-left content-left content-left content-right content-right content-right'
+    'footer footer footer footer footer footer';
 }
-@media(max-width:1343px) {
+/* @media(max-width:1343px) {
     body {
         background-image: url("../images/blue-graph-paper.jpg");
         background-repeat:repeat;
@@ -49,10 +51,10 @@ body {
     .navbar{
         flex:4;
         margin: 5px; /* margin: 25px 50px 75px 100px;
-            top margin is 25px
-            right margin is 50px
-            bottom margin is 75px
-            left margin is 100px */
+        top margin is 25px
+        right margin is 50px
+        bottom margin is 75px
+        left margin is 100px
         align-content: center;
         font-family: 'Montserrat', sans-serif;
         font-weight: 600;
@@ -81,7 +83,7 @@ body {
         flex-direction: column;
         padding: 20px;
         }
-    /* .me {
+    .me {
         vertical-align: middle;
         height:80%;
         width:80%;
@@ -93,26 +95,36 @@ body {
         border-width: 2px;
         padding: 2px;
         margin: 20px;
-        } */}
+        }  */
 
 
 
 /* HEADER SECTION START*/
 .header {
-    grid-column-start: 1;
-    grid-column-end: 4;
+    /* grid-column-start: 1;
+    grid-column-end: 7; */
     display:inline;
     height:150px;
     Margin: 5px;
+    grid-area: 'header';
+    align-content: center;
+
 }
 div.logo {
-    height:200px;
-    width:200px;
+grid-column: 1 / 3;
+grid-row: 1 / 3 ;
+}   
+.drawing{
+    object-fit: contain;
+    height:100px;
+    width:100px;
     max-width: 200px;
-    max-height: 2000px;
+    max-height: 200px;
+    flex:1;
     border:thick double black;
     border-radius: 50%;
     background-color: white;
+    overflow: hidden;
 }
 div.name {
     justify-content: left;
@@ -122,12 +134,11 @@ div.name {
 }
 div.navbar {
     justify-content: right;
-    height: 60px;
 }
 
     
 .nav{
-    margin: 5px; /* margin: 25px 50px 75px 100px;
+    margin: 10px 10px 20px 10px; /* margin: 25px 50px 75px 100px;
     top margin is 25px
     right margin is 50px
     bottom margin is 75px
@@ -249,21 +260,22 @@ div.navbar {
 .content {
     /* display:flex;
     position: absolute;
-    top: 250px; */
+    top: 250px;
+    display: flex;
+    flex-direction: row; */
+    width: 100%;
     margin:5px;
-    padding: 0%;
+    padding: 3px;
     align-items:center;
     align-content: center;
-    flex-direction: row;
-    height:500px;
-    display: flex;
+    /* height:700px; */
     background-color:#ffffff;
-    Margin: 0px 0px 5px;
     border-color: black;
     border-width: 3px;
+    display:flex
+    flex-direction: row;
 }
 .me {
-    flex:1;
     vertical-align: middle;
     height:80%;
     width:80%;
@@ -277,14 +289,16 @@ div.navbar {
     margin: 0px 20px 20px 100px;
 }
 
-#content-left {
+.content-left {
+    grid-area:'content-left';
     flex:2;
     justify-content: right;
-    flex-direction: column;
+    flex-direction:row;
     position: relative;
     top: 0px;
 }
-#content-right {
+.content-right {
+    grid-area:'content-right';
     flex:3;
     justify-content:space-between;
     align-items: center;
@@ -299,14 +313,13 @@ div.navbar {
 /* FOOTER SECTION START*/
 .footer {
     position:absolute;
-    bottom:20px;
-    left:100px;
+    bottom:15px;
+    left:70px;
     z-index: -1;
     font-size: 20px;
     padding: 10px;
     text-decoration: none;
     color: black;
-    position:relative bottom;
     justify-content: left;
     width: 100%;
     margin: 0;
